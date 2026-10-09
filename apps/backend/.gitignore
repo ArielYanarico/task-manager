@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Environment variables and secrets
+.env
+
+# Logs
+logs
+pnpm-debug.log*
+
+# Testing and Coverage
+lib-cov
+coverage/
+.nyc_output
+
+# Build and Output directories
+dist/
+build/
+Release/
+
+# IDEs, Editors, and OS-specific files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+.DS_Store
+Thumbs.db
