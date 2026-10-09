@@ -1,11 +1,11 @@
 <script setup></script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <header class="border-b border-slate-200 bg-white">
+    <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-4">
+      <span class="text-lg font-bold">TaskManager</span>
+    </div>
+  </header>
 </template>
 
 <style scoped></style>
