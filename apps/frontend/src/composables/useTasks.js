@@ -36,7 +36,22 @@ export function useTasks() {
     tasks.value = await api.getTasks();
   });
 
+  const addTask = (title) => run(async () => {
+    const task = await api.createTask(title);
+    tasks.value.unshift(task);
+  });
+
+  const markCompleted = (id) => run(async () => {
+    const updated = await api.completeTask(id);
+    const index = tasks.value.findIndex(t => t.id === id);
+    if (index !== -1) {
+      tasks.value[index] = updated ?? {
+        ...tasks.value[index], status: 'done',
+      };
+    }
+  });
+
   return {
-    tasks, loading, error, filter, filteredTasks, stats, loadTasks
+    tasks, loading, error, filter, filteredTasks, stats, loadTasks, addTask, markCompleted,
   };
 }

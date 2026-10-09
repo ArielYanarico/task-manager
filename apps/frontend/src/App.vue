@@ -4,7 +4,7 @@
   import { useTasks } from './composables/useTasks';
   import TaskList from './components/TaskList.vue';
 
-  const { loading, error, filter, filteredTasks, loadTasks } = useTasks();
+  const { loading, error, filter, filteredTasks, loadTasks, addTask, markCompleted, } = useTasks();
 
   onMounted(loadTasks);
 </script>
@@ -16,7 +16,7 @@
     </div>
   </header>
   <main class="mx-auto max-w-6xl space-y-6 px-4 py-8">
-  <TaskList :tasks="filteredTasks" :loading="loading" />
+  <TaskList :tasks="filteredTasks" :loading="loading" @complete="markCompleted"/>
   </main>
 </template>
 

@@ -11,3 +11,15 @@ async function request(path, options = {}) {
 }
 
 export const getTasks = () => request('/tasks');
+
+export const createTask = (title) =>
+  request('/tasks', {
+    method: 'POST',
+    body: JSON.stringify({ title, status: 'created' }),
+  });
+
+export const completeTask = (id) =>
+  request(`/tasks/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ status: 'done' }),
+  });

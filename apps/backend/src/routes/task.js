@@ -25,14 +25,18 @@ router.post('/', async (req, res) => {
 router.put('/:taskId', async (req, res) => {
   try {
     const id = req.params.taskId;
-    let task = await Task.findById(id);
 
-    if (task) {
-      await task.updateOne({ text: req.body.text });
-      task = await Task.findById(id);
+    const updatedTask = await Task.findByIdAndUpdate(
+      id, 
+      { $set: req.body },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedTask) {
+      return res.status(404).json({ message: 'Task not found' });
     }
 
-    return res.send(task);
+    return res.status(200).json(updatedTask);
   } catch (error) {
     return res.status(500).json({ message: 'Server error' });
   }

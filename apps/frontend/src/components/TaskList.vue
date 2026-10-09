@@ -1,5 +1,8 @@
 <script setup>
-  defineProps({ tasks: Array, loading: Boolean });
+import TaskItem from './TaskItem.vue';
+
+defineProps({ tasks: Array, loading: Boolean });
+defineEmits(['complete']);
 </script>
 
 <template>
@@ -13,6 +16,11 @@
     <p v-else-if="!tasks.length" class="p-8 text-center text-sm text-slate-500">
       No tasks found. Add your first task to get started.
     </p>
+
+    <ul v-else>
+      <TaskItem v-for="task in tasks" :key="task.id"
+        :task="task" @complete="$emit('complete', $event)" />
+    </ul>
 
   </section>
 </template>
