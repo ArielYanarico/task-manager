@@ -1,7 +1,7 @@
 
 <script setup>
-defineProps({ task: { type: Object, required: true } });
-defineEmits(['complete']);
+  defineProps({ task: { type: Object, required: true } });
+  defineEmits(['complete']);
 </script>
 
 <template>
@@ -12,13 +12,13 @@ defineEmits(['complete']);
 
     <div class="flex items-center justify-between gap-3 sm:justify-end">
       <span class="rounded-full px-3 py-1 text-xs font-medium"
-        :class="task.status === 'completed'
+        :class="task.status === 'done'
           ? 'bg-emerald-100 text-emerald-700'
           : 'bg-amber-100 text-amber-700'">
-        {{ task.status === 'completed' ? 'Completed' : 'Pending' }}
+        {{ task.status === 'done' ? 'Completed' : 'Pending' }}
       </span>
 
-      <button v-if="task.status !== 'completed'"
+      <button v-if="task.status !== 'done'"
         @click="$emit('complete', task._id)"
         class="rounded-md bg-blue-600 px-3 py-2 text-xs font-medium text-white hover:bg-blue-700">
         Mark as completed
