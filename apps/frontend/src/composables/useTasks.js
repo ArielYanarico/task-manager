@@ -43,7 +43,7 @@ export function useTasks() {
 
   const markCompleted = (id) => run(async () => {
     const updated = await api.completeTask(id);
-    const index = tasks.value.findIndex(t => t.id === id);
+    const index = tasks.value.findIndex(t => t._id === id);
     if (index !== -1) {
       tasks.value[index] = updated ?? {
         ...tasks.value[index], status: 'done',

@@ -18,7 +18,7 @@ defineEmits(['complete']);
     </p>
 
     <ul v-else>
-      <TaskItem v-for="task in tasks" :key="task.id"
+      <TaskItem v-for="task in tasks" :key="task._id"
         :task="task" @complete="$emit('complete', $event)" />
     </ul>
 
