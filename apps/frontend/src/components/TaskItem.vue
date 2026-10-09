@@ -5,25 +5,35 @@
 </script>
 
 <template>
-  <li class="flex flex-col gap-3 border-b border-slate-100 p-4 last:border-0 sm:flex-row sm:items-center">
-    <span class="min-w-0 flex-1 wrap-break-word text-sm font-medium text-slate-800">
-      {{ task.title }}
-    </span>
+  <li class="flex items-center justify-between gap-4 border-b border-slate-100 px-4 py-4 last:border-0">
+    <div class="min-w-0 flex-1 space-y-1">
+      <p class="truncate text-sm font-medium text-slate-800">
+        {{ task.title }}
+      </p>
 
-    <div class="flex items-center justify-between gap-3 sm:justify-end">
-      <span class="rounded-full px-3 py-1 text-xs font-medium"
+      <p
+        class="text-xs font-medium"
         :class="task.status === 'done'
-          ? 'bg-emerald-100 text-emerald-700'
-          : 'bg-amber-100 text-amber-700'">
+          ? 'text-emerald-700'
+          : 'text-amber-600'"
+      >
         {{ task.status === 'done' ? 'Completed' : 'Pending' }}
-      </span>
-
-      <button v-if="task.status !== 'done'"
-        @click="$emit('complete', task._id)"
-        class="rounded-md bg-blue-600 px-3 py-2 text-xs font-medium text-white hover:bg-blue-700">
-        Mark as completed
-      </button>
-      <span v-else class="text-sm text-emerald-700">✓ Done</span>
+      </p>
     </div>
+
+    <button
+      v-if="task.status !== 'done'"
+      @click="$emit('complete', task._id)"
+      class="shrink-0 whitespace-nowrap rounded-md bg-blue-600 px-3 py-2 text-xs font-medium text-white hover:bg-blue-700"
+    >
+      Mark as completed
+    </button>
+
+    <span
+      v-else
+      class="shrink-0 whitespace-nowrap text-sm font-medium text-emerald-700"
+    >
+      ✓ Done
+    </span>
   </li>
 </template>
