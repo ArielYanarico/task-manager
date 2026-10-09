@@ -16,8 +16,8 @@ export function useTasks() {
 
   const stats = computed(() => ({
     total: tasks.value.length,
-    completed: tasks.value.filter(t => t.status === 'completed').length,
-    pending: tasks.value.filter(t => t.status === 'pending').length,
+    completed: tasks.value.filter(t => t.status === 'done').length,
+    pending: tasks.value.filter(t => t.status === 'created').length,
   }));
 
   async function run(action) {
